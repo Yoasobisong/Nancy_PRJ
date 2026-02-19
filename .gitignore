@@ -1,0 +1,57 @@
+# IDE / Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# AI Assistant
+.claude/
+.gemini/
+.agent/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+*.egg
+.eggs/
+*.pyo
+.venv/
+venv/
+env/
+
+# Reference designs (not our original work)
+Will_Cogley_s_design/
+Crossing-the-Uncanny-Valley-with-Robot-Lip-Motion-main/
+
+# 3D model files (too large for git)
+STL/
+*.stl
+*.STL
+*.step
+*.STEP
+*.stp
+*.iges
+*.igs
+*.f3d
+*.SLDPRT
+*.SLDASM
+
+# Image assets (optional, uncomment if too large)
+# Model_img/
+
+# OS
+Thumbs.db
+.DS_Store
+Desktop.ini
+NUL
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Logs
+*.log
