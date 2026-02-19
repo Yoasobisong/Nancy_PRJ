@@ -23,11 +23,16 @@ Nancy 项目 = 4 大模块
 
 ### Day 1-2：吴恩达补完
 
-| 时间 | 内容                                       | 资源                                                                                     |
-| ---- | ------------------------------------------ | ---------------------------------------------------------------------------------------- |
-| 上午 | CNN 卷积神经网络：卷积层、池化层、特征图   | [吴恩达 Course 4 Week 1-2](https://www.coursera.org/learn/convolutional-neural-networks) |
-| 下午 | 经典 CNN 架构：LeNet → VGG → ResNet        | 同上                                                                                     |
-| 晚上 | 动手：用 PyTorch 跑一个 MNIST/CIFAR10 分类 | 代码跟着敲                                                                               |
+| 时间 | 内容                                       | 资源                                                                                              |
+| ---- | ------------------------------------------ | ------------------------------------------------------------------------------------------------- |
+| 上午 | CNN 卷积神经网络：卷积层、池化层、特征图   | [YouTube Playlist: CNN](https://www.youtube.com/playlist?list=PLkDaE6sCZn6Gl29AoE31iwdVwSG-KnDzF) |
+| 下午 | 经典 CNN 架构：LeNet → VGG → ResNet        | 同上                                                                                              |
+| 晚上 | 动手：用 PyTorch 跑一个 MNIST/CIFAR10 分类 | 代码跟着敲                                                                                        |
+
+**免费配套资源：**
+
+- [ ] 课程笔记 (中文): [GitHub - fengdu78](https://github.com/fengdu78/deeplearning_ai_books)
+- [ ] 课后作业 (代码): [GitHub - amanchadha](https://github.com/amanchadha/coursera-deep-learning-specialization)
 
 **关键概念清单：**
 
@@ -38,11 +43,11 @@ Nancy 项目 = 4 大模块
 
 ### Day 3-4：序列模型
 
-| 时间 | 内容                              | 资源                                                                         |
-| ---- | --------------------------------- | ---------------------------------------------------------------------------- |
-| 上午 | RNN → LSTM → GRU 原理             | [吴恩达 Course 5 Week 1](https://www.coursera.org/learn/nlp-sequence-models) |
-| 下午 | Encoder-Decoder 架构 (论文核心!)  | 同上 Week 2-3 (选看)                                                         |
-| 晚上 | Attention 机制 + Transformer 概念 | 3Blue1Brown Transformer 可视化视频                                           |
+| 时间 | 内容                              | 资源                                                                                                          |
+| ---- | --------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| 上午 | RNN → LSTM → GRU 原理             | [YouTube Playlist: Sequence Models](https://www.youtube.com/playlist?list=PLkDaE6sCZn6F6wUI9tvS_Gw1vaFAx6rd6) |
+| 下午 | Encoder-Decoder 架构 (论文核心!)  | 同上 (选看相关视频)                                                                                           |
+| 晚上 | Attention 机制 + Transformer 概念 | 3Blue1Brown Transformer 可视化视频                                                                            |
 
 **关键概念清单：**
 
@@ -340,13 +345,13 @@ ease_move(0, 60, 0.5)
 
 ### 视频课程
 
-| 资源            | 内容               | 时长 | 链接                                                                                |
-| --------------- | ------------------ | ---- | ----------------------------------------------------------------------------------- |
-| 吴恩达 CNN      | 卷积神经网络       | ~10h | [Coursera Course 4](https://www.coursera.org/learn/convolutional-neural-networks)   |
-| 吴恩达 序列模型 | RNN/LSTM/Attention | ~10h | [Coursera Course 5](https://www.coursera.org/learn/nlp-sequence-models)             |
-| 小土堆 PyTorch  | PyTorch 入门       | ~5h  | [B 站](https://www.bilibili.com/video/BV1hE411t7RN)                                 |
-| 3Blue1Brown     | 神经网络可视化     | ~1h  | [YouTube](https://www.youtube.com/playlist?list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi) |
-| FACS 教程       | 面部动作编码       | ~2h  | YouTube 搜 "FACS tutorial"                                                          |
+| 资源            | 内容               | 时长 | 链接                                                                                         |
+| --------------- | ------------------ | ---- | -------------------------------------------------------------------------------------------- |
+| 吴恩达 CNN      | 卷积神经网络       | ~10h | [YouTube Playlist](https://www.youtube.com/playlist?list=PLkDaE6sCZn6Gl29AoE31iwdVwSG-KnDzF) |
+| 吴恩达 序列模型 | RNN/LSTM/Attention | ~10h | [YouTube Playlist](https://www.youtube.com/playlist?list=PLkDaE6sCZn6F6wUI9tvS_Gw1vaFAx6rd6) |
+| 小土堆 PyTorch  | PyTorch 入门       | ~5h  | [B 站](https://www.bilibili.com/video/BV1hE411t7RN)                                          |
+| 3Blue1Brown     | 神经网络可视化     | ~1h  | [YouTube](https://www.youtube.com/playlist?list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi)          |
+| FACS 教程       | 面部动作编码       | ~2h  | YouTube 搜 "FACS tutorial"                                                                   |
 
 ### 工具 & 库
 
