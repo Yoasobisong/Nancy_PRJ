@@ -19,325 +19,223 @@ Nancy 项目 = 4 大模块
 
 ---
 
-## 第 1 周：深度学习 + PyTorch（地基）course4
+## 第 1 周：深度学习基石与框架过渡（Coursera C4+C5 → PyTorch）
 
-### Day 1-2：吴恩达补完
+> **设计思路补充**：作为底层/嵌入式开发者，你的学习不能走马观花。吴恩达的 Coursera 专项课程（C4 卷积神经网络、C5 序列模型）中包含极具价值的底层作业。与其单纯看视频，不如挑出**最核心的几周作业**认真跑通。学完底层理论后，再于周末平滑切换至工业部署首选的 PyTorch 框架。
 
-| 时间 | 内容                                       | 资源                                                                                              |
-| ---- | ------------------------------------------ | ------------------------------------------------------------------------------------------------- |
-| 上午 | CNN 卷积神经网络：卷积层、池化层、特征图   | [YouTube Playlist: CNN](https://www.youtube.com/playlist?list=PLkDaE6sCZn6Gl29AoE31iwdVwSG-KnDzF) |
-| 下午 | 经典 CNN 架构：LeNet → VGG → ResNet        | 同上                                                                                              |
-| 晚上 | 动手：用 PyTorch 跑一个 MNIST/CIFAR10 分类 | 代码跟着敲                                                                                        |
+### Day 1：CNN 底层逻辑（吴恩达 C4 Week 1）
 
-**免费配套资源：**
+| 时间 | 内容                                           | 核心输出/作业                                                                                     |
+| ---- | ---------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| 上午 | 理论：卷积层、步长、Padding、池化层            | [YouTube Playlist: CNN](https://www.youtube.com/playlist?list=PLkDaE6sCZn6Gl29AoE31iwdVwSG-KnDzF) |
+| 下午 | 理论：为什么要用卷机网络而不是全连接？         | 同上                                                                                              |
+| 晚上 | **实战**：[已完成✅] Numpy 手推卷积前/反向传播 | Coursera 作业: `Convolution_model_Step_by_Step_v2a.ipynb`                                         |
 
-- [ ] 课程笔记 (中文): [GitHub - fengdu78](https://github.com/fengdu78/deeplearning_ai_books)
-- [ ] 课后作业 (代码): [GitHub - amanchadha](https://github.com/amanchadha/coursera-deep-learning-specialization)
+**里程碑**：理解由图像张量进入，经过滤波器提取出特征图的数学本质。
 
-**关键概念清单：**
+### Day 2：经典视觉架构与其底层思想（吴恩达 C4 Week 2）
 
-- [ ] 卷积核 (kernel/filter) 是什么
-- [ ] 特征图 (feature map) 怎么产生
-- [ ] 池化 (pooling) 的作用
-- [ ] ResNet 残差连接为什么有效
+| 时间 | 内容                               | 核心输出/作业                                                               |
+| ---- | ---------------------------------- | --------------------------------------------------------------------------- |
+| 上午 | 理论：LeNet-5, AlexNet, VGG-16     | 感受感受野和深度的作用                                                      |
+| 下午 | 理论：ResNet（残差网络）、1x1 卷积 | 明白为什么残差连接（Add）能防止梯度消失，让网络能做得很深                   |
+| 晚上 | **实战**：用 Keras 搭建基础 CNN    | Coursera 作业: `Convolution_model_Application`（体验一下高级 API 的积木感） |
 
-### Day 3-4：序列模型
+_(注：C4 的 Week 3 目标检测 YOLO、Week 4 人脸识别，由于 Nancy 项目主要依赖 MediaPipe 提取特征，这两周可暂时跳过，节省时间)_
 
-| 时间 | 内容                              | 资源                                                                                                          |
-| ---- | --------------------------------- | ------------------------------------------------------------------------------------------------------------- |
-| 上午 | RNN → LSTM → GRU 原理             | [YouTube Playlist: Sequence Models](https://www.youtube.com/playlist?list=PLkDaE6sCZn6F6wUI9tvS_Gw1vaFAx6rd6) |
-| 下午 | Encoder-Decoder 架构 (论文核心!)  | 同上 (选看相关视频)                                                                                           |
-| 晚上 | Attention 机制 + Transformer 概念 | 3Blue1Brown Transformer 可视化视频                                                                            |
+### Day 3：机器人的时间轴记忆（吴恩达 C5 Week 1）
 
-**关键概念清单：**
+| 时间 | 内容                                   | 核心输出/作业                                                                                                 |
+| ---- | -------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| 上午 | 理论：为什么要用序列模型？RNN 基础架构 | [YouTube Playlist: Sequence Models](https://www.youtube.com/playlist?list=PLkDaE6sCZn6F6wUI9tvS_Gw1vaFAx6rd6) |
+| 下午 | 理论：GRU 与 LSTM 的内部逻辑门         | 重点理解 C（记忆细胞）和 H（隐藏状态）是如何随时间传递的                                                      |
+| 晚上 | **在纸上画图**：厘清时间序列的数据维度 | `[Batch_Size, Time_Steps, Feature_Dim]` ← 嵌入式时序部署必须建立的维度直觉                                    |
 
-- [ ] RNN 为什么能处理时间序列
-- [ ] LSTM 的遗忘门/输入门/输出门
-- [ ] Encoder-Decoder：输入序列 → 压缩表示 → 输出序列
-- [ ] Self-Attention 的直觉理解
+### Day 4：现代序列模型基石（吴恩达 C5 Week 3）
 
-### Day 5-6：PyTorch 实战
+| 时间 | 内容                                       | 核心输出/作业                                                |
+| ---- | ------------------------------------------ | ------------------------------------------------------------ |
+| 上午 | 理论：Encoder-Decoder（编码器-解码器）架构 | 这是如何把一段视频特征，浓缩后转化为一段伺服指令的核心架构   |
+| 下午 | 理论：Attention 机制（注意力模型）的直觉   | 懂它为什么能解决长时遗忘的问题                               |
+| 晚上 | 回顾 Nancy 论文：画出系统级网络数据流向    | 论文结构：人类动作特征输入 -> 网络处理 -> 机械手动作指令输出 |
 
-| 时间 | 内容                                         | 资源                                                                              |
-| ---- | -------------------------------------------- | --------------------------------------------------------------------------------- |
-| 上午 | PyTorch 基础：Tensor、autograd、nn.Module    | [小土堆 PyTorch 教程 (B站)](https://www.bilibili.com/video/BV1hE411t7RN) 前 15 集 |
-| 下午 | Dataset/DataLoader、训练循环、保存加载模型   | 同上 15-25 集                                                                     |
-| 晚上 | 动手：训练一个简单的回归模型 (输入→输出映射) | 自己写                                                                            |
+### Day 5：武器库切换——PyTorch 基础（张量与求导）
 
-**必须会写的代码骨架：**
+_此时你已通过 Coursera 掌握了理论和参数概念，现在正式全面转向 PyTorch_
+
+| 时间 | 内容                                        | 核心输出/作业                                                               |
+| ---- | ------------------------------------------- | --------------------------------------------------------------------------- |
+| 上午 | Tensor 运算与 CPU/GPU (`.cuda()`) 内存流向  | [小土堆 PyTorch 教程](https://www.bilibili.com/video/BV1hE411t7RN) 前端部分 |
+| 下午 | 核心引擎：Autograd（自动求导）、nn.Module   | 官方文档或教程，对比 PyTorch 自动算梯度和 Day1 你手写 Numpy 梯度的区别      |
+| 晚上 | 动手：PyTorch 搭建双层全连接网络(MLP)作回归 | 跑通“定义网络 - 清空梯度 - 反向传播 - 更新权重”的训练闭环                   |
+
+### Day 6：PyTorch 数据流与视觉实战
+
+| 时间 | 内容                                      | 核心输出/作业                                                 |
+| ---- | ----------------------------------------- | ------------------------------------------------------------- |
+| 上午 | 数据管道：自定义 Dataset 和 DataLoader    | 学习如何把硬盘上的假数据打包成 Batch 送进网络                 |
+| 下午 | 使用 `nn.Conv2d` 与 `nn.MaxPool2d`搭网络  | 把 C4 学到的理论变成 PyTorch 里的实际图纸                     |
+| 晚上 | 动手：跑通 MNIST 或 CIFAR 10 标准分类流程 | 完成一次标准化的端到端训练迭代记录 (Loss 下降，Accuracy 提升) |
+
+### Day 7：终极实战模拟（时间序列回归）
+
+_结合 C5 序列理论和 PyTorch，写一段面向南希机器人的序列逻辑代码_
+
+| 时间 | 内容                                            |
+| ---- | ----------------------------------------------- |
+| 上午 | 调用 PyTorch 的 `nn.LSTM` 模块                  |
+| 下午 | 编写面部时序数据的 DataLoader（滑动窗口提取法） |
+| 晚上 | **动手**：写一个模拟 Nancy 的网络训练骨架！     |
+
+**必须理解的骨架范例（结合了 CNN / LSTM）：**
 
 ```python
 import torch
 import torch.nn as nn
 from torch.utils.data import Dataset, DataLoader
 
-# 1. Custom dataset
-class MyDataset(Dataset):
-    def __init__(self, X, Y):
-        self.X = torch.FloatTensor(X)
-        self.Y = torch.FloatTensor(Y)
-    def __len__(self):
-        return len(self.X)
-    def __getitem__(self, idx):
-        return self.X[idx], self.Y[idx]
-
-# 2. Model definition
-class Model(nn.Module):
-    def __init__(self, input_dim, output_dim):
+# 定义面向 Nancy (136 维面部特征序列 -> 24 维舵机指令序列) 的网络模型
+class SequenceRegressionModel(nn.Module):
+    def __init__(self, input_dim=136, output_dim=24, hidden_dim=64):
         super().__init__()
-        self.net = nn.Sequential(
-            nn.Linear(input_dim, 128),
-            nn.ReLU(),
-            nn.Linear(128, 64),
-            nn.ReLU(),
-            nn.Linear(64, output_dim)
-        )
-    def forward(self, x):
-        return self.net(x)
+        # batch_first=True 非常重要，这样输入张量就是 [Batch, Time_Steps, Feature]
+        self.lstm = nn.LSTM(input_dim, hidden_dim, batch_first=True)
+        self.fc = nn.Linear(hidden_dim, output_dim)
 
-# 3. Training loop
-model = Model(136, 24)  # 68 landmarks * 2 → 24 servos
-optimizer = torch.optim.Adam(model.parameters(), lr=1e-3)
+    def forward(self, x):
+        # x.shape 进来的样子: [Batch, Time, Input_Dim]
+        out, (h_n, c_n) = self.lstm(x)
+        # out.shape 生成的样子: [Batch, Time, Hidden_Dim]
+        predictions = self.fc(out)
+        # predictions 预测的最终序列: [Batch, Time, Output_Dim] -> 直接映射给舵机数组
+        return predictions
+
+# 训练闭环概念测试：
+model = SequenceRegressionModel()
+optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
 loss_fn = nn.MSELoss()
 
-for epoch in range(100):
-    for batch_x, batch_y in dataloader:
-        pred = model(batch_x)
-        loss = loss_fn(pred, batch_y)
-        optimizer.zero_grad()
-        loss.backward()
-        optimizer.step()
+# 假装你的 dataloader 里吐出的是 [批量大小, 帧数, 特征数] 的张量
+dummy_input = torch.randn(8, 128, 136)  # 8 个片段, 每个片段包含连续 128 帧画面, 每帧 136 个追踪点
+dummy_target = torch.randn(8, 128, 24)  # 对应的 128 帧里 24 个舵机目标角度
+
+for epoch in range(10):  # 走10个epoch看看梯度能不能正常下降
+    pred = model(dummy_input)
+    loss = loss_fn(pred, dummy_target)
+    optimizer.zero_grad()
+    loss.backward()
+    optimizer.step()
     print(f"Epoch {epoch}, Loss: {loss.item():.4f}")
-
-# 4. Inference
-model.eval()
-with torch.no_grad():
-    result = model(test_input)
 ```
-
-### Day 7：复习 + 测验
-
-- 回顾 CNN、LSTM、Encoder-Decoder、PyTorch
-- 自测：能否不看资料写出上面的训练代码骨架？
-- 能否画出 Encoder-Decoder 的数据流图？
 
 ---
 
-## 第 2 周：FACS + 面部感知（核心）
+## 第 2 周：顶刊论文拆解与面部追踪实战
 
-### Day 8-9：FACS 面部动作编码系统
+> **调研修正**：Columbia Emo 机器人的核心不是简单的“看到表情再做表情”，而是**预测（Anticipating）**，能提前 840 毫秒预测人类情绪；并且它的运动模型是通过**对镜自我学习（Self-modeling）**建立的逆运动学网络。这周以此为目标重新打造。
 
-| 时间 | 内容                                 | 资源                                                                        |
-| ---- | ------------------------------------ | --------------------------------------------------------------------------- |
-| 上午 | FACS 基础：什么是 AU，AU 强度 (0-5)  | YouTube: "FACS Action Units Tutorial"                                       |
-| 下午 | 核心 AU 学习 (下方表格)              | [FACS Wikipedia](https://en.wikipedia.org/wiki/Facial_Action_Coding_System) |
-| 晚上 | 对着镜子练习：做出每个 AU 对应的表情 | 实践！                                                                      |
+### Day 8：精读 Columbia Emo 核心论文
 
-**Nancy 必须掌握的 AU（按面部区域）：**
+| 时间 | 内容                                                | 资源与任务                                                                                                      |
+| ---- | --------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| 上午 | 研读 _Science Robotics_ 发表的 Emo 论文背景与架构   | [Columbia Emo 论文主页](https://www.creativemachineslab.com/emo.html)                                           |
+| 下午 | 重点钻研 1：**预测网络（Anticipation Network）**    | 弄懂 AI 如何抓住面部的微表情，提前 840ms 做出响应。输入是前置视频帧，输出是未来的情绪分布。                     |
+| 晚上 | 重点钻研 2：**对镜自学习（Self-Modeling Network）** | 弄懂 Emo 如何看着镜子胡乱动舵机，从而自己学会“哪个舵机拉扯会导致哪里的硅胶运动”（这省去了复杂的物理数学建模）。 |
 
-| AU   | 名称               | 面部位置      | Nancy 对应机构 | 肌肉         |
-| ---- | ------------------ | ------------- | -------------- | ------------ |
-| AU1  | Inner Brow Raise   | 内眉上提      | 眉毛内侧舵机   | 额肌内侧     |
-| AU2  | Outer Brow Raise   | 外眉上提      | 眉毛外侧舵机   | 额肌外侧     |
-| AU4  | Brow Lowerer       | 皱眉          | 眉毛下拉舵机   | 皱眉肌       |
-| AU5  | Upper Lid Raise    | 睁大眼        | 上眼睑舵机     | 提上睑肌     |
-| AU6  | Cheek Raise        | 颧骨提升      | 脸颊舵机       | 颧大肌       |
-| AU7  | Lid Tighten        | 眯眼          | 下眼睑舵机     | 眼轮匝肌     |
-| AU9  | Nose Wrinkle       | 皱鼻          | (可选)         | 提上唇鼻翼肌 |
-| AU10 | Upper Lip Raise    | 上唇上提      | 上唇舵机       | 提上唇肌     |
-| AU12 | Lip Corner Pull    | 嘴角上扬=微笑 | 嘴角舵机       | 颧大肌       |
-| AU15 | Lip Corner Depress | 嘴角下拉=悲伤 | 嘴角舵机(反向) | 降口角肌     |
-| AU20 | Lip Stretch        | 唇展开        | 唇部舵机       | 颈阔肌       |
-| AU25 | Lips Part          | 嘴唇分开      | 唇部舵机       | 降下唇肌     |
-| AU26 | Jaw Drop           | 张嘴          | 下颌舵机       | 翼外肌       |
-| AU45 | Blink              | 眨眼          | 眼睑舵机       | 眼轮匝肌     |
-
-**表情 = AU 组合：**
-
-| 表情    | AU 组合                      | 描述                       |
-| ------- | ---------------------------- | -------------------------- |
-| 😊 微笑 | AU6 + AU12                   | 颧骨提升 + 嘴角上扬        |
-| 😢 悲伤 | AU1 + AU4 + AU15             | 内眉上提 + 皱眉 + 嘴角下拉 |
-| 😮 惊讶 | AU1 + AU2 + AU5 + AU26       | 眉毛全提 + 睁大眼 + 张嘴   |
-| 😠 愤怒 | AU4 + AU5 + AU7 + AU23       | 皱眉 + 睁大 + 眯眼 + 抿嘴  |
-| 😨 恐惧 | AU1 + AU2 + AU4 + AU5 + AU20 | 眉上提+皱眉+睁大+唇展      |
-| 🤢 厌恶 | AU9 + AU15 + AU25            | 皱鼻 + 嘴角下拉 + 嘴唇分开 |
-
-### Day 10-11：面部检测实战
-
-| 时间 | 内容                                      | 资源                                                                                                                                         |
-| ---- | ----------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
-| 上午 | MediaPipe Face Mesh 安装 + 跑起来         | `pip install mediapipe`                                                                                                                      |
-| 下午 | 理解 468 个关键点的分布                   | [关键点图谱](https://github.com/google/mediapipe/blob/master/mediapipe/modules/face_geometry/data/canonical_face_model_uv_visualization.png) |
-| 晚上 | 写代码：提取关键点 → 计算简单的 AU 近似值 | 自己写                                                                                                                                       |
-
-**关键点 → AU 近似计算示例：**
-
-```python
-import mediapipe as mp
-import numpy as np
-
-def landmarks_to_au_approx(landmarks):
-    """
-    Approximate AU values from MediaPipe 468 landmarks.
-    Each landmark is (x, y, z) normalized to [0,1].
-    """
-    lm = np.array([(l.x, l.y, l.z) for l in landmarks])
-
-    # AU26 - Jaw Drop: distance between upper and lower lip
-    upper_lip = lm[13]  # upper lip center
-    lower_lip = lm[14]  # lower lip center
-    jaw_open = np.linalg.norm(upper_lip - lower_lip)
-    au26 = min(jaw_open * 30, 5.0)  # scale to 0-5
-
-    # AU12 - Smile: mouth width relative to rest
-    mouth_left = lm[61]
-    mouth_right = lm[291]
-    mouth_width = np.linalg.norm(mouth_left - mouth_right)
-    au12 = min(mouth_width * 15, 5.0)
-
-    # AU45 - Blink: eye aspect ratio
-    # left eye: top=159, bottom=145, left=33, right=133
-    eye_top = lm[159]
-    eye_bot = lm[145]
-    eye_height = np.linalg.norm(eye_top - eye_bot)
-    au45 = max(0, (0.02 - eye_height) * 200)  # closed = high value
-
-    return {'AU12': au12, 'AU26': au26, 'AU45': au45}
-```
-
-### Day 12：OpenFace 安装 + 对比
-
-| 时间 | 内容                                             |
-| ---- | ------------------------------------------------ |
-| 上午 | 安装 OpenFace 2.0 (Windows 有编译好的版本)       |
-| 下午 | 对比 MediaPipe 自己算的 AU 和 OpenFace 输出的 AU |
-| 晚上 | 决定 V1 用哪个方案 (推荐: MediaPipe 更轻量)      |
-
-> **OpenFace 下载：** https://github.com/TadasBaltrusaitis/OpenFace/releases
-
-### Day 13-14：精读论文
-
-| 时间        | 内容                                               |
-| ----------- | -------------------------------------------------- |
-| Day 13 上午 | 通读论文全文，标注不懂的地方                       |
-| Day 13 下午 | 重点读 Section 3 (Method)：网络结构、输入输出      |
-| Day 14 上午 | 重点读 Section 4 (Hardware)：舵机布局、AU→舵机映射 |
-| Day 14 下午 | **画出完整的系统框图**（从摄像头到舵机每一步）     |
-
-> **论文地址：** https://www.creativemachineslab.com/emo.html
-
-**读论文时重点关注：**
-
-- [ ] 输入是什么？(对方面部 AU 的时间序列)
-- [ ] 输出是什么？(机器人 AU 的目标值)
-- [ ] 网络结构是什么？(Encoder-Decoder + Attention?)
-- [ ] 训练数据从哪来？(人类对话视频)
-- [ ] 损失函数是什么？(AU 预测误差)
-
----
-
-## 第 3 周：机械 + 电子（你的主场）
-
-### Day 15-16：机构学速成
-
-| 时间 | 内容                          | 资源                    |
-| ---- | ----------------------------- | ----------------------- |
-| 上午 | 四连杆机构原理 + 类型         | B 站搜"机械原理 四连杆" |
-| 下午 | 曲柄滑块、万向节、差动机构    | 同上                    |
-| 晚上 | 用纸板 + 铁丝做一个四连杆模型 | 动手！                  |
-
-**重点理解：**
-
-- [ ] 曲柄摇杆 → 连续旋转变往复摆动 (唇部机构)
-- [ ] 平行四连杆 → 保持角度 (眼球机构)
-- [ ] 差动机构 → 两输入合成两输出 (脖子)
-- [ ] 万向节 → 两轴旋转自由度 (脖子顶部)
-
-### Day 17-18：CAD 建模（Fusion360）
+### Day 9：FACS 面部动作编码系统
 
 | 时间 | 内容                                       | 资源                                                                        |
 | ---- | ------------------------------------------ | --------------------------------------------------------------------------- |
-| 上午 | Fusion360 安装 + 基础操作 (草图/拉伸/旋转) | [Fusion360 官方教程](https://help.autodesk.com/view/fusion360/ENU/courses/) |
-| 下午 | 画一个舵机支架 + 连杆                      | 跟教程做                                                                    |
-| 晚上 | 装配体：把舵机+连杆+摇臂装起来             | 实操                                                                        |
+| 上午 | FACS 基础：什么是 AU（Action Unit）及强度  | [FACS Wikipedia](https://en.wikipedia.org/wiki/Facial_Action_Coding_System) |
+| 下午 | 熟悉核心 AU：皱眉(AU4)、微笑(AU12)、睁眼等 | 了解人类表皮肌肉是如何收缩引起表皮形变的，这是控制软体硅胶脸的基础。        |
+| 晚上 | 实践：对着镜子，把自己的脸当成机器人       | 体验一下你的表情是由多少块面部肌肉协同拉扯（协同舵机）完成的。              |
 
-### Day 19-20：电子系统搭建
+### Day 10-11：面部关键点与微表情提取
 
-| 时间 | 内容                                |
-| ---- | ----------------------------------- |
-| 上午 | PCA9685 + Jetson I2C 接线 + 测试    |
-| 下午 | 控制 2-3 个舵机，写缓入缓出插值代码 |
-| 晚上 | 4S 电池 + BEC 分电方案焊接          |
+| 时间 | 内容                                       | 资源                                                                                     |
+| ---- | ------------------------------------------ | ---------------------------------------------------------------------------------------- |
+| 上午 | MediaPipe Face Mesh 安装与测试             | Emo 机器人是在眼睛（瞳孔）里安装了高分辨率摄像头来捕捉人类表情。你也用电脑摄像头起步。   |
+| 下午 | 理解 468 个关键点的三维空间（XYZ）分布     | [Google MediaPipe 官方文档](https://google.github.io/mediapipe/solutions/face_mesh.html) |
+| 晚上 | 写代码：提取瞳孔间距纠正尺度，计算关键参数 | 提取嘴角的拉伸速度追踪微笑趋势，提取眼轮匝肌距追踪皱眉趋势。                             |
 
-**测试代码：**
+### Day 12：建立你自己的表情捕捉数据管道
 
-```python
-from adafruit_servokit import ServoKit
-import math, time
-
-kit = ServoKit(channels=16, address=0x40)
-
-def ease_move(ch, target, duration=0.5):
-    """Smooth servo movement with ease-in-out."""
-    current = kit.servo[ch].angle or 90
-    steps = int(duration * 50)  # 50Hz update
-    for i in range(1, steps + 1):
-        t = i / steps
-        ease = 0.5 - 0.5 * math.cos(math.pi * t)
-        kit.servo[ch].angle = current + (target - current) * ease
-        time.sleep(duration / steps)
-
-# Test
-ease_move(0, 120, 0.5)
-time.sleep(0.5)
-ease_move(0, 60, 0.5)
-```
-
-### Day 21：V1 完整管线
-
-把前面所有东西串起来：
-
-```
-摄像头 → MediaPipe → 关键点 → AU 近似 → 查表 → PCA9685 → 舵机
-
-一个 Python 文件搞定！
-```
+| 时间 | 内容                                                                   |
+| ---- | ---------------------------------------------------------------------- |
+| 上午 | 使用 OpenCV 录制你自己的脸部表情（模拟人类互动数据集）                 |
+| 下午 | 写 Python 脚本自动跑批你的视频，抽取出连续时间帧（如 30fps）的特征张量 |
+| 晚上 | 将提取的数据打包保存为 `.npy` 矩阵文件，为下周深度学习做准备           |
 
 ---
 
-## 第 4 周：整合 + 论文复现（冲刺）
+## 第 3 周：硬核机械与电子系统（双核机构复现）
 
-### Day 22-23：V1 整合调试
+> **结构修正**：结合两篇论文，机器人的核心硬件具有极大挑战：**26 个高密度 DOF**（其中 10 个专注唇部），且突破了传统纯拉线的限制，实现了**推/拉双向驱动**与**欠驱动顺应关节**；皮肤采用**磁性快拆结构**。这周是你的主战场！
 
-| 时间 | 内容                                    |
-| ---- | --------------------------------------- |
-| 上午 | 整合完整 pipeline：摄像头到舵机         |
-| 下午 | 调整 AU → 舵机映射表（手动标定每个 AU） |
-| 晚上 | 测试各种表情：微笑、惊讶、悲伤、愤怒    |
+### Day 13-14：10 DOF 仿生唇部与推拉双向机构设计
 
-### Day 24-25：论文模型复现
+| 时间 | 内容                               | 资源与任务                                                                                               |
+| ---- | ---------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| 上午 | 研读论文的硬件补充材料 (Hardware)  | 重点看 10-DOF 口部结构：左右嘴角(各2DOF，控制前突/回缩)、上唇(3DOF，下降外翻)、下唇(2DOF，抬升外翻)。    |
+| 下午 | **双向推/拉（Push-Pull）机构分析** | 传统线缆只能拉。你需要设计刚性/半刚性连杆结合柔性枢纽，使得电机既能把嘴唇扯开，也能撅起来（Puckering）。 |
+| 晚上 | Fusion 360 建模实战                | 设计一个具有磁铁锚点（Magnetic quick-release connectors）的唇部独立驱动单元雏形，准备 3D 打印测试。      |
 
-| 时间        | 内容                                      |
-| ----------- | ----------------------------------------- |
-| Day 24 上午 | 用 PyTorch 搭建论文的 Encoder-Decoder     |
-| Day 24 下午 | 准备训练数据：录制对话视频 → 提取 AU 序列 |
-| Day 25 上午 | 训练模型 (先用小数据集验证 pipeline)      |
-| Day 25 下午 | 模型推理测试：输入 AU 序列 → 预测下一帧   |
+### Day 15：眼球深度的秘密与高频总线通信
 
-### Day 26-27：部署 + 优化
+| 时间 | 内容                                                                                                                                      |
+| ---- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| 上午 | **眼部硬件视角**：设计一个 2 自由度眼球云台，中心必须留通孔放置微型广角摄像头。这是实现目光接触（Eye Contact）的绝对前提。                |
+| 下午 | 思考 26 个微型舵机的布局（空间几何折叠）与安装背板设计。                                                                                  |
+| 晚上 | **电子总线提速**：研究双 PCA9685 级联架构。修改 Jetson I2C 波特率（提权至 400kHz 或更高级别），确保 26 个通道的高频同步刷新没有任何抖动。 |
 
-| 时间 | 内容                                     |
-| ---- | ---------------------------------------- |
-| 上午 | PyTorch → ONNX → TensorRT (你熟悉的流程) |
-| 下午 | 在 Jetson 上跑完整管线，测帧率           |
-| 晚上 | 延迟优化、舵机响应调整                   |
+### Day 16-17：硅胶皮肤翻模与"磁吸快拆"工艺
 
-### Day 28：总结 + V2 规划
+| 时间 | 内容                                                                                             |
+| ---- | ------------------------------------------------------------------------------------------------ |
+| 上午 | 学习铂金硅胶（如 Ecoflex/Dragon Skin）的调配与真空除泡工艺。                                     |
+| 下午 | **锚点植入工艺**：如何在硅胶固化前，将微型钕磁铁（Ø3-5mm）精准埋入对应脸上 26 个肌肉节点的位置？ |
+| 晚上 | 组装你的第一个测试单元：电机 + 连杆 + 磁吸扣 + 单块硅胶，并跑通第一波平滑缓入缓出代码。          |
 
-- V1 演示录像
-- 记录所有问题和改进方向
-- 规划 V2：唇同步、更好的训练数据、更精细的 AU 标定
+### Day 18：Motor Babbling（电机自主探索）数据采集
+
+| 时间 | 内容                                                                                                                                                                                                                  |
+| ---- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 全天 | **极度重要的数据集建立**：写一段脚本，让组装好的面部系统进行 "Motor Babbling"（随机胡乱发送舵机组合指令），同时用前置摄像头录下形变后的脸。生成至少数千帧 `[视频帧, 电机指令]` 的配对矩阵。这是下周自监督学习的命脉。 |
+
+---
+
+## 第 4 周：前沿双模型融合（视觉共情 + 音频唇语）
+
+> **冲刺目标**：在边缘计算端（Jetson），融合 **Paper 1 的视觉表情预测（共表达）** 与 **Paper 2 的音频驱动唇步同步（VAE+FAT）**，打造终极拟人内核。
+
+### Day 19-20：管线 A —— 视觉表情共表达（Anticipation & Inverse Kinematics）
+
+| 时间   | 内容                                                                                                                                                                               |
+| ------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Day 19 | **逆运动学自模型训练**：拿 Day 18 录制的 Motor Babbling 数据，训练一个极简的特征解码器。输入是想要的表情特征，输出是 26 个舵机的目标拉力值。这一步彻底跳过复杂的物理建模。         |
+| Day 20 | **意图预测 (Anticipation) 网络搭建**：复现论文核心因果推理模型。从人类对话视频中，训练网络通过人脸微表情，提前 **840 毫秒** 预测出目标表情（比如察觉到别人要笑了，提取发笑趋势）。 |
+
+### Day 21-23：管线 B —— 逼真唇部同步（Learn Realistic Lip Motions）
+
+| 时间   | 内容                                                                                                                                                                                                |
+| ------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Day 21 | **理解 Wav2Lip 与 VAE 域自适应**：了解如何利用开源的 Wav2Lip 将音频转为 2D 目标合成图像。然后使用 PyTorch 搭建一个变分自编码器 (VAE)，把摄像头真实的机器人脸和合成脸，映射到同一个 **16维隐空间**。 |
+| Day 22 | **面部动作 Transformer (FAT) 建模**：唇同步不能发生抖动。用 Transformer Encoder-Decoder 结构，输入前一帧的电机动作和当前隐空间向量，输出极致平滑的当前电机指令。                                    |
+| Day 23 | **加闭唇惩罚 (Closure Loss)**：重点攻克 "b/p/m" 这类爆破双唇音。修改损失函数，当遇到双唇音特征时，强制要求上下唇的机械距必须为零合拢（这是避免"假唱感"的核心秘密）。                                |
+
+### Day 24-26：系统整合与端侧部署 (Jetson)
+
+| 时间   | 内容                                                                                                                                                                                     |
+| ------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Day 24 | **大一统并发架构设计**：<br>- 线程 1：麦克风监听 -> TTS/Wav2Lip推理 -> VAE+FAT -> 唇部 10 舵机指令<br>- 线程 2：眼部摄像头感知 -> Anticipation预测 -> 逆运动网络 -> 脸部其他 16 舵机指令 |
+| Day 25 | **推理加速部署 (TensorRT)**：将庞大的 Transformer 和预测网络分别转为 ONNX 并由 Jetson 的 GPU 加速编译为 TensorRT 引擎，压榨极致延迟保证 840ms 半秒级的身心合一。                         |
+| Day 26 | **实机对话闭环**：接入 LLM（如 ChatGPT API），进行全流程对话测试：语音打招呼 -> LLM思考生成文本 -> Edge-TTS 转语音 -> Robot 并发进行脸部微表情调整及同步唇语发音！                       |
+
+### Day 27-28：技术复盘与迭代
+
+- **验收测试**：测试 11 种多语言的唇部泛化能力（论文证明仅用英语训练也能泛化到中/日/法等）。
+- **难点梳理**：系统录制演示视频。总结硅胶弹性的热衰减、Wav2Lip 推理延迟带来的滞后等问题。
+- **展望规划**：规划下一代底层硬件系统及多模态端到端模型的预研。
 
 ---
 
