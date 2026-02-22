@@ -57,5 +57,5 @@ NUL
 *.log
 
 # other
-record/pytorch_official_course/data
+record/pytorch_official_course/data/
 *.pth
