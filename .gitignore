@@ -55,3 +55,7 @@ NUL
 
 # Logs
 *.log
+
+# other
+record/pytorch_official_course/data
+*.pth
