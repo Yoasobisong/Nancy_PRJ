@@ -60,3 +60,4 @@ NUL
 record/pytorch_official_course/data/
 *.pth
 n/.accelerate/
+dl_course/d2l_pytorch/
