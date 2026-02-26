@@ -60,4 +60,6 @@ NUL
 record/pytorch_official_course/data/
 *.pth
 n/.accelerate/
-dl_course/d2l_pytorch/
+dl_course/d2l_pytorch/*
+!dl_course/d2l_pytorch/.gitkeep
+dl_course/d2l-zh-pytorch.pdf
