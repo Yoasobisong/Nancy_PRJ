@@ -41,7 +41,7 @@ Nancy 项目 = 4 大模块
 | 下午 | 理论：ResNet（残差网络）、1x1 卷积  | 明白为什么残差连接（Add）能防止梯度消失，让网络能做得很深                  |
 | 晚上 | **复盘**：跳过全英文 Keras 代码作业 | 重点理解残差网络与 1x1 卷积的原理即可（省下精力留给后面的 PyTorch 实战）。 |
 
-### Task 3：人脸识别背后的核心算法（绝对不能跳过的 C4 Week 4）
+### Task 3：人脸识别背后的核心算法（绝对不能跳过的 C4 Week 4）[x]
 
 > **为何重要**：之前错误地以为“人脸识别”仅仅是解锁手机的工具，所以建议你跳过。但细看你的**两篇顶刊论文**，里面充满了将图片映射到“隐空间 (Latent Space)” 并在隐向量之间计算距离 `||L't - Li||` 的操作 (VAE/Wav2Lip)。吴恩达这一周讲的 Siamese 网络和 Triplet Loss，**正是这些隐向量距离计算的绝对基础！没学这个，你根本看不懂论文 2 的数学推导。**
 
@@ -59,7 +59,7 @@ Nancy 项目 = 4 大模块
 | 下午 | 理论：GRU 与 LSTM 的内部逻辑门            | 重点理解 C（记忆细胞）和 H（隐藏状态）是如何随时间传递的                                                      |
 | 晚上 | 进阶篇：Attention 机制与 Transformer 概念 | 懂它为什么能解决长时序列的遗忘问题，看懂 Nancy 动作推演的最后一张图                                           |
 
-### Task 5：武器库切换——PyTorch 基础（张量与求导）
+### Task 5：武器库切换——PyTorch 基础（张量与求导）[x]
 
 _此时你已通过 Coursera 掌握了理论和参数概念，现在正式全面转向 PyTorch_
 
@@ -87,15 +87,15 @@ _此时你已通过 Coursera 掌握了理论和参数概念，现在正式全面
 | 下午 | 理论：VAE 为什么要“变分”？引入 $\mu$ 和 $\sigma$ | [李宏毅机器学习：VAE (含KL散度)](https://www.youtube.com/watch?v=YruFM7GuJTE) |
 | 晚上 | **动手**：用 PyTorch 徒手撸一个极简 VAE          | 跑通一个带 KL 惩罚项的 Loss 函数，打印出连续的隐空间采样                      |
 
-### Task 8：注意力机制的究极体：Transformer 架构
+### Task 8：注意力机制的究极体：Transformer 架构 (切换为李沐 D2L)
 
-> **为何重要**：普通的 RNN/LSTM 在长句子序列里还是会遗忘，而第二篇论文为了保证唇部电机命令绝对不抖动，用的是 FAT (Facial Action Transformer)。你必须彻底搞懂 Self-Attention 和 Transformer Decoder 的底层矩阵乘法。
+> **为何重要**：普通的 RNN/LSTM 在长句子序列里还是会遗忘，而第二篇论文为了保证唇部电机命令绝对不抖动，用的是 FAT (Facial Action Transformer)。你必须彻底搞懂 Self-Attention 和 Transformer Decoder 的底层矩阵乘法。相比于纯 PPT 讲解，李沐老师的代码级拆解对程序员绝对更友好。
 
-| 时间 | 内容                                            | 核心输出/作业                                                                            |
-| ---- | ----------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| 上午 | 理论：Self-Attention (Q, K, V 矩阵) 的本质      | [李宏毅机器学习：Self-Attention](https://www.youtube.com/watch?v=hYdO9CscNes) (极其通俗) |
-| 下午 | 理论：Transformer 编码与解码机制、位置编码 (PE) | [李宏毅机器学习：Transformer](https://www.youtube.com/watch?v=n9TlOhRjYoc)               |
-| 晚上 | **在纸上推导**：Transformer 的时序因果掩码      | 弄明白 Decoder 是如何用 Mask （遮盖未来信息）来做到“看着上一帧预测下一帧”                |
+| 时间 | 内容                                               | 核心输出/作业                                                                       |
+| ---- | -------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| 上午 | 理论与代码：注意力机制 / 自注意力 (Self-Attention) | 阅读/观看 D2L 第10章: `10.1-10.5 自注意力机制`。弄懂 Q, K, V 矩阵的实际代码和形状。 |
+| 下午 | 理论与代码：Transformer Encoder 与 Decoder 架构    | 阅读/观看 D2L 第10章: `10.6-10.7 Transformer`。包括位置编码(PE)如何在代码里生成。   |
+| 晚上 | **动手跑图纸**：在电脑上跑通 D2L 10.7 的全量源码   | 这个作业取代了纸上推导，直接照着 D2L 书本敲一次 Transformer 的前向传播即可通透！    |
 
 ---
 
@@ -212,13 +212,13 @@ _此时你已通过 Coursera 掌握了理论和参数概念，现在正式全面
 
 ### 视频课程 (优先推荐)
 
-| 资源             | 内容               | 时长 | 链接                                                                                                                                                        |
-| ---------------- | ------------------ | ---- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 吴恩达 CNN       | 卷积神经网络       | ~10h | [B站中英字幕版](https://www.bilibili.com/video/BV1FT4y1E74V) / [YouTube Playlist](https://www.youtube.com/playlist?list=PLkDaE6sCZn6Gl29AoE31iwdVwSG-KnDzF) |
-| 吴恩达 序列模型  | RNN/LSTM/Attention | ~10h | [B站中英字幕版](https://www.bilibili.com/video/BV12E411a7Xn) / [YouTube Playlist](https://www.youtube.com/playlist?list=PLkDaE6sCZn6F6wUI9tvS_Gw1vaFAx6rd6) |
-| 李宏毅 2021/2022 | Autoencoder & VAE  | ~3h  | [B站: Auto-encoder 基础](https://www.bilibili.com/video/BV1Wv411h7kN?p=72) / [B站: VAE](https://www.bilibili.com/video/BV1Wv411h7kN?p=76)                   |
-| 李宏毅 2021/2022 | Transformer (必看) | ~2h  | [B站: Self-attention](https://www.bilibili.com/video/BV1Wv411h7kN?p=38) / [B站: Transformer](https://www.bilibili.com/video/BV1Wv411h7kN?p=43)              |
-| 小土堆 PyTorch   | PyTorch 入门实战   | ~5h  | [B站教程 (极度详细适合新手)](https://www.bilibili.com/video/BV1hE411t7RN)                                                                                   |
+| 资源                  | 内容                   | 时长 | 链接                                                                                                                                                        |
+| --------------------- | ---------------------- | ---- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 吴恩达 CNN            | 卷积神经网络           | ~10h | [B站中英字幕版](https://www.bilibili.com/video/BV1FT4y1E74V) / [YouTube Playlist](https://www.youtube.com/playlist?list=PLkDaE6sCZn6Gl29AoE31iwdVwSG-KnDzF) |
+| 吴恩达 序列模型       | RNN/LSTM/Attention     | ~10h | [B站中英字幕版](https://www.bilibili.com/video/BV12E411a7Xn) / [YouTube Playlist](https://www.youtube.com/playlist?list=PLkDaE6sCZn6F6wUI9tvS_Gw1vaFAx6rd6) |
+| 李宏毅 2021/2022      | Autoencoder & VAE      | ~3h  | [B站: Auto-encoder 基础](https://www.bilibili.com/video/BV1Wv411h7kN?p=72) / [B站: VAE](https://www.bilibili.com/video/BV1Wv411h7kN?p=76)                   |
+| 动手学深度学习 (李沐) | Transformer (配书必学) | ~4h  | [B站: D2L 注意力机制与Transformer (66-68集)](https://www.bilibili.com/video/BV1Mv411r7eb?p=66)                                                              |
+| 小土堆 PyTorch        | PyTorch 入门实战       | ~5h  | [B站教程 (极度详细适合新手)](https://www.bilibili.com/video/BV1hE411t7RN)                                                                                   |
 
 ### 文本与图文资料 (便于速查)
 
