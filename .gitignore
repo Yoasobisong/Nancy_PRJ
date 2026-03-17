@@ -63,3 +63,6 @@ n/.accelerate/
 dl_course/d2l_pytorch/*
 !dl_course/d2l_pytorch/.gitkeep
 dl_course/d2l-zh-pytorch.pdf
+./Will_Cogley_s_design
+
+./pcb-design/simplefoc_rec.zip
